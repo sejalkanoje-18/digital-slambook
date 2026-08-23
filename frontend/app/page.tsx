@@ -59,8 +59,10 @@ type Entry = {
 
 const tabs = ["About Me", "Friends", "Memories", "Messages"];
 
-const API_BASE = "http://localhost:8080/api";
-
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  "http://localhost:8080/api";
+  
 export default function Page() {
   const [people, setPeople] = useState<Person[]>([]);
   const [entries, setEntries] = useState<Entry[]>([]);
