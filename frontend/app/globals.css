@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+:root {
+  color-scheme: light;
+  --background: oklch(0.975 0.018 305);
+  --foreground: oklch(0.19 0.075 292);
+  --card: oklch(1 0.004 305);
+  --card-foreground: oklch(0.19 0.075 292);
+  --primary: #ff84ba;
+  --primary-foreground: #fff7fb;
+  --secondary: oklch(0.9 0.08 285);
+  --muted: oklch(0.94 0.025 300);
+  --muted-foreground: oklch(0.48 0.07 292);
+  --accent: oklch(0.82 0.16 82);
+  --border: oklch(0.88 0.045 300);
+  --input: oklch(0.88 0.045 300);
+  --ring: #ff84ba;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background text-foreground; font-family: Arial, Helvetica, sans-serif; }
+  ::selection { background: oklch(0.56 0.19 18 / .22); }
+}
+
+.bg-peach { background: linear-gradient(135deg, oklch(0.92 .08 35), oklch(.86 .11 70)); }
+.bg-blue { background: linear-gradient(135deg, oklch(.83 .1 215), oklch(.84 .08 180)); }
+.bg-pink { background: linear-gradient(135deg, oklch(.9 .1 350), oklch(.83 .1 310)); }
+
+button, a { transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease, background .2s ease; }
+button:active { transform: scale(.98); }
+@media (prefers-reduced-motion: no-preference) {
+  section { animation: rise .6s ease both; }
+}
+@keyframes rise { from { opacity: .5; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: oklch(.7 .03 265); border-radius: 999px; }
